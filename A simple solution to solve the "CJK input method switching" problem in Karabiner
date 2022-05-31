@@ -1,0 +1,109 @@
+// 先打开中/英切换（系统偏好设置>键盘>输入法>使用大写锁定键切换“ABC”输入模式）
+// 核心思路是先切换输入法，再通过caps键去刷新。
+// 以下演示的是 简体中文双拼/简体中文五笔/繁体中文双拼/英文切换的脚本。
+// 注：我手头的macbook pro是中国大陆地区发行的2021款16寸 m1 max 64GB 运行Monterey12.3（karabiner14.4.0），我不确定其他地区的发行版是否也有这个功能，也没有验证在其他的版本上是否能正常运行。
+
+{
+                        "description": "中文输入法切换",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^com\\.apple\\.inputmethod\\.SCIM\\.WBX$",
+                                            "language": "zh*"
+                                        }
+                                    },
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^com\\.apple\\.inputmethod\\.SCIM\\.Shuangpin$",
+                                            "language": "zh*"
+                                        }
+                                    },
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^com\\.apple\\.inputmethod\\.TCIM\\.Shuangpin$",
+                                            "language": "zh*"
+                                        }
+                                    },
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
